@@ -1,7 +1,20 @@
-AWSTemplateFormatVersion: 2019-09-09
-Resorces:
+#Resources is misspelled
+#Renamed it to Resources:.
+#Changed AWSTemplateFormatVersion to 2010-09-09
+#Wrong Type format for the bucket
+#Changed it to Type: 'AWS::S3::Bucket'.
+#BucketPolicy is not inside Resources
+#ndented/moved BucketPolicy: under Resources:.
+#BucketPolicy is missing its Type (it had an # for comment instead)
+#Un-commented it so it reads Type: 'AWS::S3::BucketPolicy'.
+
+#Revision No. 1
+#2026-02-10
+
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
   S3Bucket:
-    Type: 'AWS:S3:Bucket'
+    Type: 'AWS::S3::Bucket'
     Properties:
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
@@ -13,8 +26,8 @@ Resorces:
         ErrorDocument: error.html
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
-BucketPolicy:
-    #Type: 'AWS::S3::BucketPolicy'
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
     Properties:
       PolicyDocument:
         Id: MyPolicy
